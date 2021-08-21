@@ -1,5 +1,5 @@
 # dtv-influx-exporter
-A tiny tool to export statistics of DTV applications (mirakc, EPGStation)
+A tiny tool to export statistics of DTV applications (Mirakurun, EPGStation)
 
 Demo -> [dashboard.starry.blue](https://dashboard.starry.blue/d/RqWiLyfGk/dtv?orgId=1&refresh=10s)
 
@@ -11,7 +11,7 @@ Demo -> [dashboard.starry.blue](https://dashboard.starry.blue/d/RqWiLyfGk/dtv?or
 version: '3.8'
 
 services:
-  mirakc:
+  mirakurun:
     # ...
   epgstation:
     # ...
@@ -30,8 +30,8 @@ services:
     environment:
       # メトリックの取得間隔 (秒)
       INTERVAL: 10
-      # mirakc アドレス
-      MIRAKC_ADDR: http://mirakc:40772
+      # Mirakurun アドレス
+      MIRAKURUN_ADDR: http://mirakurun:40772
       # EPGStation アドレス
       EPGSTATION_ADDR: http://epgstation:8888
       # InfluxDB アドレス

@@ -6,13 +6,13 @@ curl -i -X POST "${INFLUX_ADDR}/query" --data-urlencode "q=CREATE DATABASE ${INF
 
 while true
 do
-    tuners=`curl -s "${MIRAKC_ADDR}/api/tuners"`
+    tuners=`curl -s "${MIRAKURUN_ADDR}/api/tuners"`
     tuners_using=`echo $tuners | jq "[.[] | select(.isUsing == true)] | length"`
     tuners_fault=`echo $tuners | jq "[.[] | select(.isFault == true)] | length"`
     tuners_users=`echo $tuners | jq "[.[].users | length] | add"`
     curl -s -X POST "${INFLUX_ADDR}/write?db=${INFLUX_DB}&precision=s" --data-binary "mirakc,type=tuners using=${tuners_using},fault=${tuners_fault},users=${tuners_users}"
 
-    programs=`curl -s ${MIRAKC_ADDR}/api/programs`
+    programs=`curl -s ${MIRAKURUN_ADDR}/api/programs`
     programs_total=`echo $programs | jq "length"`
     curl -s -X POST "${INFLUX_ADDR}/write?db=${INFLUX_DB}&precision=s" --data-binary "mirakc,type=programs total=${programs_total}"
 
