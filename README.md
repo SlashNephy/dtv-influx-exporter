@@ -32,10 +32,10 @@ services:
       MIRAKURUN_ADDR: http://mirakurun:40772
       # EPGStation アドレス
       EPGSTATION_ADDR: http://epgstation:8888
-      # InfluxDB アドレス
       INFLUX_ADDR: http://influxdb:8086
-      # InfluxDB データベース名
-      INFLUX_DB: dtv
+      INFLUX_BUCKET: xxx
+      INFLUX_ORG: org
+      INFLUX_TOKEN: xxx
 
 volumes:
   influxdb:
