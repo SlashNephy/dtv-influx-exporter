@@ -1,0 +1,30 @@
+---
+name: 'Build Image'
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+    branches-ignore:
+      - 'renovate/**'
+
+  release:
+    types:
+      - published
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+  actions: read
+  security-events: write
+
+jobs:
+  build:
+    uses: SlashNephy/.github/.github/workflows/docker-build.yml@master
+    with:
+      image-name: ghcr.io/slashnephy/dtv-influx-exporter
+      # linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x
+      image-platforms: linux/amd64

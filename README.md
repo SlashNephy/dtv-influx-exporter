@@ -1,9 +1,7 @@
 # dtv-influx-exporter
-A tiny tool to export statistics of DTV applications (Mirakurun, EPGStation)
+A tiny tool to export statistics of DTV applications (Mirakurun, EPGStation).
 
-Demo -> [dashboard.starry.blue](https://dashboard.starry.blue/d/RqWiLyfGk/dtv?orgId=1&refresh=10s)
-
-[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/slashnephy/dtv-influx-exporter/latest)](https://hub.docker.com/r/slashnephy/dtv-influx-exporter)
+Supports InfluxDB 2.x.
 
 `docker-compose.yml`
 
@@ -18,14 +16,14 @@ services:
 
   influxdb:
     container_name: InfluxDB
-    image: influxdb
+    image: influxdb:2.3
     restart: always
     volumes:
       - influxdb:/var/lib/influxdb
 
   dtv-influx-exporter:
     container_name: dtv-influx-exporter
-    image: slashnephy/dtv-influx-exporter:latest
+    image: ghcr.io/slashnephy/dtv-influx-exporter:master
     restart: always
     environment:
       # メトリックの取得間隔 (秒)
